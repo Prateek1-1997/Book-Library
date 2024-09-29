@@ -2,6 +2,7 @@ package com.example.book.library.domain.usecase
 
 import com.example.book.library.domain.IRemoteRepository
 import com.example.book.library.domain.model.BookListDataItem
+import com.example.book.library.presentation.authentication.common.getYearFromEpoch
 import java.util.Calendar
 import javax.inject.Inject
 
@@ -20,11 +21,6 @@ class FetchBooksListUsecase @Inject constructor(private val iRemoteRepository: I
         }.toSortedMap(compareByDescending { it })
     }
 
-    private fun getYearFromEpoch(publishedChapterDate: Int): Int {
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = publishedChapterDate.toLong() * 1000
-        return calendar.get(Calendar.YEAR)
-    }
 
 
 }

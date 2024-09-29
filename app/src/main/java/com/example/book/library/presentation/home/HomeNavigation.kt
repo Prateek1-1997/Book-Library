@@ -56,6 +56,7 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.book.library.domain.model.BookListDataItem
 import com.example.book.library.presentation.authentication.AuthenticationActivity
+import com.example.book.library.presentation.authentication.common.getYearFromEpoch
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
@@ -237,6 +238,12 @@ fun IndividualBookDetailCard(bookListDataItem: BookListDataItem?) {
                     text = "Score: ${bookListDataItem?.score ?: ""}",
                     style = MaterialTheme.typography.body2,
                     color = Color.Gray
+                )
+
+                Text(
+                    text = "Published in: ${getYearFromEpoch(bookListDataItem?.publishedChapterDate?:0)}",
+                    style = MaterialTheme.typography.body2,
+                    color = Color.Black
                 )
             }
 
